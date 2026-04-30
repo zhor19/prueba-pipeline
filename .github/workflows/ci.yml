@@ -1,0 +1,30 @@
+name: CI/CD básico 
+ 
+on: 
+ push: 
+   branches: [main] 
+ pull_request: 
+   branches: [main] 
+ 
+jobs: 
+ build: 
+   name: Validar y construir aplicación 
+   runs-on: ubuntu-latest 
+ 
+   steps: 
+     - name: Descargar código del repositorio 
+       uses: actions/checkout@v4 
+ 
+     - name: Configurar Node.js 
+       uses: actions/setup-node@v4 
+       with: 
+         node-version: 20 
+ 
+     - name: Instalar dependencias 
+       run: npm install 
+ 
+     - name: Validar código 
+       run: npm run lint --if-present 
+ 
+     - name: Construir aplicación 
+       run: npm run build 
