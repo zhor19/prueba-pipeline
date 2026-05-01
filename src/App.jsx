@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function App() {
+export default function App() {
   const [hora, setHora] = useState(new Date());
 
   useEffect(() => {
